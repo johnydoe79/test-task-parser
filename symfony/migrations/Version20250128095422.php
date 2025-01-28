@@ -10,23 +10,23 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250127113530 extends AbstractMigration
+final class Version20250128095422 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Commodity class creation';
+        return 'Alter commodity description field type to "text"';
     }
 
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE commodity (id SERIAL NOT NULL, name VARCHAR(255) NOT NULL, price DOUBLE PRECISION DEFAULT NULL, photo VARCHAR(255) DEFAULT NULL, description VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('ALTER TABLE commodity ALTER description TYPE TEXT');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP TABLE commodity');
+        $this->addSql('ALTER TABLE commodity ALTER description TYPE VARCHAR(255)');
     }
 }

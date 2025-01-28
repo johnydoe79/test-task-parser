@@ -4,25 +4,32 @@ namespace App\Entity;
 
 use App\Repository\CommodityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CommodityRepository::class)]
+#[ORM\UniqueConstraint(name: 'uniq_commodity_name', columns: ['name'])]
 class Commodity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['commodity:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['commodity:read'])]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['commodity:read'])]
     private ?float $price = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['commodity:read'])]
     private ?string $photo = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['commodity:read'])]
     private ?string $description = null;
 
     public function getId(): ?int
