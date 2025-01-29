@@ -14,13 +14,15 @@
    git clone https://github.com/johnydoe79/test-task-parser.git
    cd test-task-parser
 
-2. Соберите контейнеры и запустите:
-docker compose up --build -d 
+2. **Соберите контейнеры и запустите:**
+   ```bash
+   docker compose up --build -d 
 
-3. Установите зависимости
-docker exec -it symfony_php composer install
+3. **Установите зависимости**
+   ```bash
+   docker exec -it symfony_php composer install
 
-# Запуск тестов
-docker exec -it symfony_php vendor/bin/phpunit
-
+# **Запуск тестов**
+   ```bash
+   docker exec -it symfony_php vendor/bin/phpunit
 
