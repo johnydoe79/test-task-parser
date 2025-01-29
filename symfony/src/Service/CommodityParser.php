@@ -74,7 +74,7 @@ class CommodityParser
      * Ищем все теги <script type="application/ld+json">, декодируем JSON
      * и возвращаем массивы, где @type = "Product".
      */
-    private function parseJsonLd(string $html): array
+    public function parseJsonLd(string $html): array
     {
         $crawler = new Crawler($html);
         $ldJsonBlocks = $crawler->filter('script[type="application/ld+json"]');
